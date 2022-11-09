@@ -7,14 +7,13 @@
         :key="index"
         class="recommendation-product"
       >
-        <img :src="changeImage(index)" class="product-img" :alt="altImage" />
+        <img :src="changeImage(index)" class="product-img" :alt="`recommendation of ${product.name}`" />
         <div class="product-info">
           <h5>{{ other.name }}</h5>
           <RouterLink
             :to="{ name: 'product', params: { slug: other.slug }, force: true }"
             class="btn-primary"
-            >see product</RouterLink
-          >
+            >see product</RouterLink>
         </div>
       </div>
     </div>
@@ -30,23 +29,22 @@ export default {
     product: Object,
   },
   setup(props) {
+    // change the image according to the screen size
     function changeImage(position) {
       if (screenWidth.value < 500) {
-        return props.product.others[position].image.mobile.replace(".", "");
+        return `/src/${props.product.others[position].image.mobile.replace(".", "")}`;
       } else if (screenWidth.value < 950) {
-        return props.product.others[position].image.tablet.replace(".", "");
+        return `/src/${props.product.others[position].image.tablet.replace(".", "")}`;
       } else {
-        return props.product.others[position].image.desktop.replace(".", "");
+        return `/src/${props.product.others[position].image.desktop.replace(".", "")}`;
       }
     }
 
-    const altImage = computed(() => {
-      return "recommendation of " + props.product.name;
-    });
-
+    // get the pinia store to set the screen size 
     const screenStore = useScreenStore();
-
     let screenWidth = ref(screenStore.getScreenWidth);
+
+    // set the screen size by listening the resize of the page
     window.addEventListener("resize", handleScreenListener);
 
     function handleScreenListener() {
@@ -55,8 +53,7 @@ export default {
     }
 
     return {
-      changeImage,
-      altImage
+      changeImage
     };
   },
 };

@@ -5,9 +5,11 @@ import { useCartStore } from "../store/cart";
 import { ref, computed } from "vue";
 import { useScreenStore } from "../store/screen";
 
+// get the pinia store to set the screen size 
 const screenStore = useScreenStore();
-
 let screenWidth = ref(screenStore.getScreenWidth);
+
+// set the screen size by listening the resize of the page
 window.addEventListener("resize", handleScreenListener);
 
 function handleScreenListener() {
@@ -17,10 +19,9 @@ function handleScreenListener() {
     menuReveal.value = false;
   }
 }
-
 const cartStore = useCartStore();
 const menuReveal = ref(false);
-
+// function that display the menu 
 function toggleMenu() {
   menuReveal.value = !menuReveal.value;
 }

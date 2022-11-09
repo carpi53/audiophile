@@ -8,8 +8,7 @@
       <RouterLink
         :to="{ name: 'product', params: { slug: productItem.slug } }"
         class="btn-primary"
-        >see product</RouterLink
-      >
+        >see product</RouterLink>
     </div>
   </div>
 </template>
@@ -23,19 +22,22 @@ export default {
     productItem: Object,
   },
   setup(props) {
+    // change the image according to the screen size
     const changeImage = computed(() => {
       if (screenWidth.value < 500) {
-        return props.productItem.categoryImage.mobile.replace(".", "");
+        return `/src/${props.productItem.categoryImage.mobile.replace(".", "")}`;       
       } else if (screenWidth.value < 800) {
-        return props.productItem.categoryImage.tablet.replace(".", "");
+        return `/src/${props.productItem.categoryImage.tablet.replace(".", "")}`;
       } else {
-        return props.productItem.categoryImage.desktop.replace(".", "");
+        return `/src/${props.productItem.categoryImage.desktop.replace(".", "")}`;
       }
     });
 
+    // get the pinia store to set the screen size 
     const screenStore = useScreenStore();
-
     let screenWidth = ref(screenStore.getScreenWidth);
+
+    // set the screen size by listening the resize of the page
     window.addEventListener("resize", handleScreenListener);
 
     function handleScreenListener() {

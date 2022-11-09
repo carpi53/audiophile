@@ -30,10 +30,11 @@ export default {
     const router = useRouter();
 
     const productsStore = useProductsStore();
+    // get the product with the slug, refer to /store/product.js
     const product = productsStore.getProducts.find(
       (element) => element.slug === route.params.slug
     );
-
+    // scroll to the start of the page when first loaded
     onMounted(() => {
       window.scrollTo(0, 0);
     });

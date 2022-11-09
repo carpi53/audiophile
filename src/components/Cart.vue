@@ -2,10 +2,11 @@
 import { useCartStore } from "../store/cart";
 const cartStore = useCartStore();
 
+// function that increase the quantity of a product in the cart, refer to /store/cart.js
 function stepUp(name) {
   cartStore.increaseQuantity(name);
 }
-
+// function that decrease the quantity of a product in the cart, refer to /store/cart.js
 function stepDown(name) {
   cartStore.decreaseQuantity(name);
 }
@@ -28,18 +29,11 @@ function stepDown(name) {
         </button>
       </div>
       <div v-if="!cartStore.cart.length" class="description">Cart empty</div>
-      <div
-        class="cart-item"
-        v-for="cartItem in cartStore.getCart"
-        :key="cartItem"
-      >
+      <div class="cart-item" v-for="cartItem in cartStore.getCart" :key="cartItem">
         <Transition>
           <div class="cart-item-container">
             <div class="cart-item-info">
-              <img
-                :src="`/src/assets/cart/image-${cartItem.slug}.jpg`"
-                alt=""
-              />
+              <img :src="`/src/assets/cart/image-${cartItem.slug}.jpg`" :alt="`cart image of ${cartItem.slug}`"/>
               <div class="cart-item-info-detail">
                 <div class="cart-product-name">{{ cartItem.name }}</div>
                 <div class="cart-price">$ {{ cartItem.price }}</div>
@@ -63,19 +57,13 @@ function stepDown(name) {
       </div>
       <div v-if="cartStore.cart.length" class="cart-total">
         <p class="total-text">Total</p>
-        <p class="total-price">
-          $
-          {{
-            cartStore.getTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          }}
-        </p>
+        <p class="total-price">$ {{ cartStore.getTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}</p>
       </div>
       <RouterLink
         v-if="cartStore.cart.length"
         to="/checkout"
         class="btn-primary checkout"
-        >checkout</RouterLink
-      >
+        >checkout</RouterLink>
     </div>
   </div>
 </template>

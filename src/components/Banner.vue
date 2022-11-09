@@ -7,7 +7,7 @@ defineProps({
   <section class="banner">
     <div class="banner-info">
       <h4>{{ product.name }}</h4>
-      <RouterLink :to="{name: 'product', params: {slug: product.slug}}" class="btn-secondary">see product</RouterLink>
+      <RouterLink :to="{ name: 'product', params: { slug: product.slug } }" class="btn-secondary">see product</RouterLink>
     </div>
   </section>
 </template>
@@ -15,7 +15,7 @@ defineProps({
 .banner {
   width: 100%;
   height: 320px;
-  background-image: url("@/assets/home/desktop/image-speaker-zx7.jpg");
+  background-image: url("/src/assets/home/desktop/image-speaker-zx7.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -39,21 +39,20 @@ defineProps({
 }
 
 @media (max-width: 800px) {
-.banner{
-  background-image: url("@/assets/home/tablet/image-speaker-zx7.jpg");
-  .banner-info {
-    width: 50%;
+  .banner {
+    background-image: url("/src/assets/home/tablet/image-speaker-zx7.jpg");
+    .banner-info {
+      width: 50%;
+    }
   }
-}
 }
 
 @media (max-width: 500px) {
-.banner{
-  background-image: url("@/assets/home/mobile/image-speaker-zx7.jpg");
-  .banner-info {
-    width: 90%;
+  .banner {
+    background-image: url("/src/assets/home/mobile/image-speaker-zx7.jpg");
+    .banner-info {
+      width: 90%;
+    }
   }
 }
-}
-
 </style>

@@ -3,7 +3,9 @@ import { useCartStore } from "../store/cart";
 import { ref, reactive } from "vue";
 import CheckoutConfirmation from "./CheckoutConfirmation.vue";
 const cartStore = useCartStore();
+// hide cart when the page is first loaded
 cartStore.reveal = false;
+// get the values of the form 
 const name = ref("");
 const email = ref("");
 const phone = ref("");
@@ -14,8 +16,9 @@ const country = ref("");
 const paymentMethod = ref("eMoney");
 const emoneyNumber = ref("");
 const emoneyPin = ref("");
+// set the confirmation modal to false until the form is valid 
 const confirmationReveal = ref(false);
-
+// set the error messages for the form validation
 let errorMsg = reactive({
   name: "",
   email: "",
@@ -27,7 +30,7 @@ let errorMsg = reactive({
   emoneyNumber: "",
   emoneyPin: "",
 });
-
+// object that define which input is valid or not, the all form is valid when all the attributes are true
 const inputsValidity = {
   name: false,
   email: false,
@@ -40,10 +43,11 @@ const inputsValidity = {
   emoneyPin: false,
 };
 
+// reset the error message when we type again in the input
 function resetError(e) {
   errorMsg[e.target.id] = "";
 }
-
+// verify each form if it's valid or not 
 function onSubmit() {
   verifName(name.value);
   verifEmail(email.value);
@@ -54,12 +58,13 @@ function onSubmit() {
   verifCountry(country.value);
   verifPaymentMethod(emoneyNumber.value, emoneyPin.value, paymentMethod.value);
   const keys = Object.keys(inputsValidity);
+  // verify if there are invalid form, if one of the attributes in inputValidity is false 
   const failedInput = keys.filter((key) => !inputsValidity[key]);
   if (!failedInput.length) {
     confirmationReveal.value = true;
   }
 }
-
+// verify if the name has only letters or space
 function verifName(name) {
   if (!/^[A-Za-z ]+$/.test(name)) {
     errorMsg.name = "Wrong name";
@@ -70,7 +75,7 @@ function verifName(name) {
   inputsValidity.name = true;
   return true;
 }
-
+// verify if the email is valid with this format text@text.text
 function verifEmail(email) {
   if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
     errorMsg.email = "Wrong email";
@@ -81,7 +86,7 @@ function verifEmail(email) {
   inputsValidity.email = true;
   return true;
 }
-
+// verify if the phone has only numbers and 10 digits
 function verifPhone(phone) {
   if (!/^\d{10}$/.test(phone)) {
     errorMsg.phone = "Wrong phone (10 digits)";
@@ -92,7 +97,7 @@ function verifPhone(phone) {
   inputsValidity.phone = true;
   return true;
 }
-
+// verify if the address has only letters, numbers or space
 function verifAddress(address) {
   if (!/^[A-Za-z0-9 ]+$/.test(address)) {
     errorMsg.address = "Wrong address (not special characters)";
@@ -103,7 +108,7 @@ function verifAddress(address) {
   inputsValidity.address = true;
   return true;
 }
-
+// verify if the zipcode has only numbers and 5 digits
 function verifZipcode(zipcode) {
   if (!/^\d{5}$/.test(zipcode)) {
     errorMsg.zipcode = "Wrong Zip code (5 digits)";
@@ -114,7 +119,7 @@ function verifZipcode(zipcode) {
   inputsValidity.zipcode = true;
   return true;
 }
-
+// verify if the city has only letters or space
 function verifCity(city) {
   if (!/^[A-Za-z ]+$/.test(city)) {
     errorMsg.city = "Wrong city";
@@ -125,7 +130,7 @@ function verifCity(city) {
   inputsValidity.city = true;
   return true;
 }
-
+// verify if the country has only letters or space
 function verifCountry(country) {
   if (!/^[A-Za-z ]+$/.test(country)) {
     errorMsg.country = "Wrong country";
@@ -136,7 +141,7 @@ function verifCountry(country) {
   inputsValidity.country = true;
   return true;
 }
-
+// set the emoney input to true if cash on delivery is selected. otherwise we verify the e-money inputs
 function verifPaymentMethod(emoneyNumber, emoneyPin, paymentMethod) {
   if (paymentMethod === "eMoney") {
     verifEMoneyNumber(emoneyNumber);
@@ -146,7 +151,7 @@ function verifPaymentMethod(emoneyNumber, emoneyPin, paymentMethod) {
     inputsValidity.emoneyPin = true;
   }
 }
-
+// verify if the e-Money Number has only numbers and 9 digits
 function verifEMoneyNumber(emoneyNumber) {
   if (!/^\d{9}$/.test(emoneyNumber)) {
     errorMsg.emoneyNumber = "Wrong e-money number (9 digits)";
@@ -157,7 +162,7 @@ function verifEMoneyNumber(emoneyNumber) {
   inputsValidity.emoneyNumber = true;
   return true;
 }
-
+// verify if the e-Money Pin has only numbers and 4 digits
 function verifEMoneyPin(emoneyPin) {
   if (!/^\d{4}$/.test(emoneyPin)) {
     errorMsg.emoneyPin = "Wrong e-money pin (4 digits)";
@@ -178,9 +183,7 @@ function verifEMoneyPin(emoneyPin) {
           <p class="subtitle">billing details</p>
           <div class="input-container">
             <div class="input-group">
-              <label for="name" :class="{ redLabel: errorMsg.name }"
-                >Name</label
-              >
+              <label for="name" :class="{ redLabel: errorMsg.name }">Name</label>
               <p class="error-msg" v-if="errorMsg.name">{{ errorMsg.name }}</p>
               <input
                 type="text"
@@ -194,9 +197,7 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="email" :class="{ redLabel: errorMsg.email }"
-                >Email Address</label
-              >
+              <label for="email" :class="{ redLabel: errorMsg.email }">Email Address</label>
               <p class="error-msg" v-if="errorMsg.email">
                 {{ errorMsg.email }}
               </p>
@@ -212,9 +213,7 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="phone" :class="{ redLabel: errorMsg.phone }"
-                >Phone Number</label
-              >
+              <label for="phone" :class="{ redLabel: errorMsg.phone }">Phone Number</label>
               <p class="error-msg" v-if="errorMsg.phone">
                 {{ errorMsg.phone }}
               </p>
@@ -235,9 +234,7 @@ function verifEMoneyPin(emoneyPin) {
           <p class="subtitle">shipping info</p>
           <div class="input-container">
             <div class="input-group address">
-              <label for="address" :class="{ redLabel: errorMsg.address }"
-                >Address</label
-              >
+              <label for="address" :class="{ redLabel: errorMsg.address }">Address</label>
               <p class="error-msg" v-if="errorMsg.address">
                 {{ errorMsg.address }}
               </p>
@@ -253,9 +250,7 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="zipcode" :class="{ redLabel: errorMsg.zipcode }"
-                >ZIP code</label
-              >
+              <label for="zipcode" :class="{ redLabel: errorMsg.zipcode }">ZIP code</label>
               <p class="error-msg" v-if="errorMsg.zipcode">
                 {{ errorMsg.zipcode }}
               </p>
@@ -271,9 +266,7 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="city" :class="{ redLabel: errorMsg.city }"
-                >City</label
-              >
+              <label for="city" :class="{ redLabel: errorMsg.city }">City</label>
               <p class="error-msg" v-if="errorMsg.city">
                 {{ errorMsg.city }}
               </p>
@@ -289,9 +282,7 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="country" :class="{ redLabel: errorMsg.country }"
-                >City</label
-              >
+              <label for="country" :class="{ redLabel: errorMsg.country }">City</label>
               <p class="error-msg" v-if="errorMsg.country">
                 {{ errorMsg.country }}
               </p>
@@ -341,8 +332,7 @@ function verifEMoneyPin(emoneyPin) {
               <label
                 for="emoneyNumber"
                 :class="{ redLabel: errorMsg.emoneyNumber }"
-                >e-Money Number</label
-              >
+                >e-Money Number</label>
               <p class="error-msg" v-if="errorMsg.emoneyNumber">
                 {{ errorMsg.emoneyNumber }}
               </p>
@@ -359,8 +349,7 @@ function verifEMoneyPin(emoneyPin) {
             </div>
             <div class="input-group">
               <label for="country" :class="{ redLabel: errorMsg.emoneyPin }"
-                >e-Money PIN</label
-              >
+                >e-Money PIN</label>
               <p class="error-msg" v-if="errorMsg.emoneyPin">
                 {{ errorMsg.emoneyPin }}
               </p>
@@ -376,12 +365,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
           </div>
-          <div
-            v-show="paymentMethod === 'cashOnDelivery'"
-            class="cash-on-delivery"
-          >
+          <div v-show="paymentMethod === 'cashOnDelivery'" class="cash-on-delivery">
             <img
-              src="@/assets/checkout/icon-cash-on-delivery.svg"
+              src="/src/assets/checkout/icon-cash-on-delivery.svg"
               alt="Icone cash on delivery"
             />
             <p class="description">
@@ -413,12 +399,7 @@ function verifEMoneyPin(emoneyPin) {
         <div class="summary-total">
           <p class="summary-description">Total</p>
           <p class="summary-number">
-            $
-            {{
-              cartStore.getTotal
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            }}
+            $ {{ cartStore.getTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
           </p>
         </div>
         <div class="summary-total">
@@ -428,21 +409,13 @@ function verifEMoneyPin(emoneyPin) {
         <div class="summary-total">
           <p class="summary-description">VAT Included</p>
           <p class="summary-number">
-            $
-            {{
-              cartStore.getVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            }}
+            $ {{ cartStore.getVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
           </p>
         </div>
         <div class="summary-total">
           <p class="summary-description">Grand total</p>
           <p class="summary-number">
-            $
-            {{
-              cartStore.getTotalWithVat
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            }}
+            $ {{ cartStore.getTotalWithVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
           </p>
         </div>
       </div>

@@ -65,19 +65,22 @@ export default {
     Recommendation,
   },
   setup(props) {
+    // change the image according to the screen size
     const changeImage = computed(() => {
       if (screenWidth.value < 500) {
-        return props.product.image.mobile.replace(".", "");
+        return `/src/${props.product.image.mobile.replace(".", "")}`;
       } else if (screenWidth.value < 950) {
-        return props.product.image.tablet.replace(".", "");
+        return `/src/${props.product.image.tablet.replace(".", "")}`;
       } else {
-        return props.product.image.desktop.replace(".", "");
+        return `/src/${props.product.image.desktop.replace(".", "")}`;
       }
     });
 
+    // get the pinia store to set the screen size 
     const screenStore = useScreenStore();
-
     let screenWidth = ref(screenStore.getScreenWidth);
+
+    // set the screen size by listening the resize of the page
     window.addEventListener("resize", handleScreenListener);
 
     function handleScreenListener() {
@@ -86,11 +89,11 @@ export default {
     }
 
     const quantity = ref(1);
-
+    // function that increase the quantity in the input 
     const stepUp = function () {
       quantity.value++;
     };
-
+    // function that decrease the quantity in the input 
     const stepDown = function () {
       if (quantity.value > 1) {
         quantity.value--;
@@ -98,14 +101,17 @@ export default {
     };
 
     const cartStore = useCartStore();
-
+    // add a product in the pinia store /store/cart.js
     function addToCart() {
       const index = cartStore.cart.findIndex(
         (element) => element.name === props.product.name
       );
+      // if element is not find in the cart, we add it. Otherwise we update the quantity
       if (index != -1) {
+        // update cart 
         cartStore.cart[index].quantity =
           cartStore.cart[index].quantity + quantity.value;
+        // update in the local storage, the cart will be saved even if the page is refreshed
         localStorage.setItem(
           cartStore.cart[index].name,
           JSON.stringify(cartStore.cart[index])
@@ -117,7 +123,9 @@ export default {
           price: props.product.price,
           slug: props.product.slug,
         };
+        // add in the cart store
         cartStore.cart.push(product);
+        // add in the local storage, the cart will be saved even if the page is refreshed
         localStorage.setItem(product.name, JSON.stringify(product));
       }
     }

@@ -1,10 +1,12 @@
 <script setup>
+//import
 import { useScreenStore } from "../store/screen";
 import { computed,ref } from "vue"
 defineProps({
   product: Object,
 });
 
+// function that change the image according to the screen size
 const changeImage = computed(() => {
   if (screenWidth.value < 500) {
     return "/src/assets/shared/mobile/image-best-gear.jpg";;
@@ -15,9 +17,12 @@ const changeImage = computed(() => {
   }
 });
 
+// get the pinia store to set the screen size 
 const screenStore = useScreenStore();
 
 let screenWidth = ref(screenStore.getScreenWidth);
+
+// set the screen by listening the resize of the page
 window.addEventListener("resize", handleScreenListener);
 
 function handleScreenListener() {

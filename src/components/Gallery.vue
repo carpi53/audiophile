@@ -4,51 +4,42 @@ import { useScreenStore } from "../store/screen";
 const props = defineProps({
   product: Object,
 });
+// change the first Image of the gallery according to screen size
 const changeFirstImage = computed(() => {
   if (screenWidth.value < 500) {
-    return props.product.gallery.first.mobile.replace(".", "");
+    return `/src/${props.product.gallery.first.mobile.replace(".", "")}`;
   } else if (screenWidth.value < 950) {
-    return props.product.gallery.first.tablet.replace(".", "");
+    return `/src/${props.product.gallery.first.tablet.replace(".", "")}`;
   } else {
-    return props.product.gallery.first.desktop.replace(".", "");
+    return `/src/${props.product.gallery.first.desktop.replace(".", "")}`;
   }
 });
-
+// change the second Image of the gallery according to screen size
 const changeSecondImage = computed(() => {
   if (screenWidth.value < 500) {
-    return props.product.gallery.second.mobile.replace(".", "");
+    return `/src/${props.product.gallery.second.mobile.replace(".", "")}`;
   } else if (screenWidth.value < 950) {
-    return props.product.gallery.second.tablet.replace(".", "");
+    return `/src/${props.product.gallery.second.tablet.replace(".", "")}`;
   } else {
-    return props.product.gallery.second.desktop.replace(".", "");
+    return `/src/${props.product.gallery.second.desktop.replace(".", "")}`;
   }
 });
-
+// change the third Image of the gallery according to screen size
 const changeThirdImage = computed(() => {
   if (screenWidth.value < 500) {
-    return props.product.gallery.third.mobile.replace(".", "");
+    return `/src/${props.product.gallery.third.mobile.replace(".", "")}`;
   } else if (screenWidth.value < 950) {
-    return props.product.gallery.third.tablet.replace(".", "");
+    return `/src/${props.product.gallery.third.tablet.replace(".", "")}`;
   } else {
-    return props.product.gallery.third.desktop.replace(".", "");
+    return `/src/${props.product.gallery.third.desktop.replace(".", "")}`;
   }
 });
 
-const altImageFirst = computed(() => {
-  return "first gallery image of " + props.product.name;
-});
-
-const altImageSecond = computed(() => {
-  return "second gallery image of " + props.product.name;
-});
-
-const altImageThird = computed(() => {
-  return "third gallery image of " + props.product.name;
-});
-
+// get the pinia store to set the screen size 
 const screenStore = useScreenStore();
-
 let screenWidth = ref(screenStore.getScreenWidth);
+
+// set the screen size by listening the resize of the page
 window.addEventListener("resize", handleScreenListener);
 
 function handleScreenListener() {
@@ -61,17 +52,17 @@ function handleScreenListener() {
     <img
       :src="changeFirstImage"
       class="gallery-first-img"
-      :alt="altImageFirst"
+      :alt="`first gallery image of ${product.name}`"
     />
     <img
       :src="changeSecondImage"
       class="gallery-second-img"
-      :alt="altImageSecond"
+      :alt="`second gallery image of ${product.name}`"
     />
     <img
       :src="changeThirdImage"
       class="gallery-third-img"
-      :alt="altImageThird"
+      :alt="`third gallery image of ${product.name}`"
     />
   </section>
 </template>
