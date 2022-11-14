@@ -367,7 +367,7 @@ function verifEMoneyPin(emoneyPin) {
           </div>
           <div v-show="paymentMethod === 'cashOnDelivery'" class="cash-on-delivery">
             <img
-              src="/src/assets/checkout/icon-cash-on-delivery.svg"
+              src="/assets/checkout/icon-cash-on-delivery.svg"
               alt="Icone cash on delivery"
             />
             <p class="description">
@@ -387,7 +387,7 @@ function verifEMoneyPin(emoneyPin) {
         :key="summaryItem"
       >
         <div class="summary-item-info">
-          <img :src="`/src/assets/cart/image-${summaryItem.slug}.jpg`" alt="" />
+          <img :src="`assets/cart/image-${summaryItem.slug}.jpg`" alt="" />
           <div class="summary-item-info-detail">
             <div class="summary-product-name">{{ summaryItem.name }}</div>
             <div class="summary-price">$ {{ summaryItem.price }}</div>

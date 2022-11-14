@@ -2,27 +2,32 @@
 //import
 import { useScreenStore } from "../store/screen";
 import { computed,ref } from "vue"
+import { useRoute } from "vue-router";
 defineProps({
   product: Object,
 });
 
+const route = useRoute();
+let baseUrl = "";
+if(route.fullPath.includes("/product/")){
+  baseUrl = "../";
+}
 // function that change the image according to the screen size
 const changeImage = computed(() => {
   if (screenWidth.value < 500) {
-    return "/src/assets/shared/mobile/image-best-gear.jpg";;
+    return `${baseUrl}assets/shared/mobile/image-best-gear.jpg`;
   } else if (screenWidth.value < 800) {
-    return "/src/assets/shared/tablet/image-best-gear.jpg";
+    return `${baseUrl}assets/shared/tablet/image-best-gear.jpg`;
   } else {
-    return "/src/assets/shared/desktop/image-best-gear.jpg";
+    return `${baseUrl}assets/shared/desktop/image-best-gear.jpg`;
   }
 });
 
 // get the pinia store to set the screen size 
 const screenStore = useScreenStore();
-
 let screenWidth = ref(screenStore.getScreenWidth);
 
-// set the screen by listening the resize of the page
+// set the screen size by listening the resize of the page
 window.addEventListener("resize", handleScreenListener);
 
 function handleScreenListener() {

@@ -15,7 +15,7 @@ defineProps({
 .banner {
   width: 100%;
   height: 320px;
-  background-image: url("/src/assets/home/desktop/image-speaker-zx7.jpg");
+  background-image: url("/assets/home/desktop/image-speaker-zx7.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -40,7 +40,7 @@ defineProps({
 
 @media (max-width: 800px) {
   .banner {
-    background-image: url("/src/assets/home/tablet/image-speaker-zx7.jpg");
+    background-image: url("/assets/home/tablet/image-speaker-zx7.jpg");
     .banner-info {
       width: 50%;
     }
@@ -49,7 +49,7 @@ defineProps({
 
 @media (max-width: 500px) {
   .banner {
-    background-image: url("/src/assets/home/mobile/image-speaker-zx7.jpg");
+    background-image: url("/assets/home/mobile/image-speaker-zx7.jpg");
     .banner-info {
       width: 90%;
     }

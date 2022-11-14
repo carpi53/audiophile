@@ -17,7 +17,7 @@ onBeforeRouteLeave((to, from) => {
     </Teleport>
     <div class="confirmation-content">
       <img
-        src="@/assets/checkout/icon-order-confirmation.svg"
+        src="/assets/checkout/icon-order-confirmation.svg"
         alt="icone de confirmation"
       />
       <h3>THANK YOU FOR YOUR ORDER</h3>

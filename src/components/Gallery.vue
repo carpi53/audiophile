@@ -7,31 +7,31 @@ const props = defineProps({
 // change the first Image of the gallery according to screen size
 const changeFirstImage = computed(() => {
   if (screenWidth.value < 500) {
-    return `/src/${props.product.gallery.first.mobile.replace(".", "")}`;
+    return props.product.gallery.first.mobile.replace(".", "..");
   } else if (screenWidth.value < 950) {
-    return `/src/${props.product.gallery.first.tablet.replace(".", "")}`;
+    return props.product.gallery.first.tablet.replace(".", "..");
   } else {
-    return `/src/${props.product.gallery.first.desktop.replace(".", "")}`;
+    return props.product.gallery.first.desktop.replace(".", "..");
   }
 });
 // change the second Image of the gallery according to screen size
 const changeSecondImage = computed(() => {
   if (screenWidth.value < 500) {
-    return `/src/${props.product.gallery.second.mobile.replace(".", "")}`;
+    return props.product.gallery.second.mobile.replace(".", "..");
   } else if (screenWidth.value < 950) {
-    return `/src/${props.product.gallery.second.tablet.replace(".", "")}`;
+    return props.product.gallery.second.tablet.replace(".", "..");
   } else {
-    return `/src/${props.product.gallery.second.desktop.replace(".", "")}`;
+    return props.product.gallery.second.desktop.replace(".", "..");
   }
 });
 // change the third Image of the gallery according to screen size
 const changeThirdImage = computed(() => {
   if (screenWidth.value < 500) {
-    return `/src/${props.product.gallery.third.mobile.replace(".", "")}`;
+    return props.product.gallery.third.mobile.replace(".", "..");
   } else if (screenWidth.value < 950) {
-    return `/src/${props.product.gallery.third.tablet.replace(".", "")}`;
+    return props.product.gallery.third.tablet.replace(".", "..");
   } else {
-    return `/src/${props.product.gallery.third.desktop.replace(".", "")}`;
+    return props.product.gallery.third.desktop.replace(".", "..");
   }
 });
 

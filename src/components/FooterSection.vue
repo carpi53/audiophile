@@ -10,7 +10,7 @@ defineProps({
       <div class="line-footer"></div>
       <div class="footer-links">
         <img
-          src="/src/assets/shared/desktop/logo.svg"
+          src="/assets/shared/desktop/logo.svg"
           alt="audiophile"
           class="footer-logo"
         />

@@ -1,7 +1,7 @@
 <script setup>
 import { useCartStore } from "../store/cart";
+import { ref, computed } from "vue"
 const cartStore = useCartStore();
-
 // function that increase the quantity of a product in the cart, refer to /store/cart.js
 function stepUp(name) {
   cartStore.increaseQuantity(name);
@@ -10,6 +10,10 @@ function stepUp(name) {
 function stepDown(name) {
   cartStore.decreaseQuantity(name);
 }
+
+const productPage = computed(() => {
+  return cartStore.route.includes("/product/") ? true : false;
+});
 </script>
 <template>
   <div class="cart" v-if="cartStore.reveal">
@@ -33,7 +37,8 @@ function stepDown(name) {
         <Transition>
           <div class="cart-item-container">
             <div class="cart-item-info">
-              <img :src="`/src/assets/cart/image-${cartItem.slug}.jpg`" :alt="`cart image of ${cartItem.slug}`"/>
+              <img v-if="productPage" :src="`../assets/cart/image-${cartItem.slug}.jpg`" :alt="`cart image of ${cartItem.slug}`"/>
+              <img v-else :src="`assets/cart/image-${cartItem.slug}.jpg`" :alt="`cart image of ${cartItem.slug}`"/>
               <div class="cart-item-info-detail">
                 <div class="cart-product-name">{{ cartItem.name }}</div>
                 <div class="cart-price">$ {{ cartItem.price }}</div>

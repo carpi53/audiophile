@@ -9,7 +9,7 @@ defineProps({
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-headphones.png"
+          src="/assets/shared/desktop/image-category-thumbnail-headphones.png"
           alt="category headphones"
           class="category-img"
         />
@@ -19,7 +19,7 @@ defineProps({
         <div class="link-container">
           <RouterLink to="/headphones" @click="toggleMenu">Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>
@@ -28,7 +28,7 @@ defineProps({
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-speakers.png"
+          src="/assets/shared/desktop/image-category-thumbnail-speakers.png"
           alt="category speakers"
           class="category-img"
         />
@@ -38,7 +38,7 @@ defineProps({
         <div class="link-container">
           <RouterLink to="/speakers" @click="toggleMenu" >Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>
@@ -47,7 +47,7 @@ defineProps({
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-earphones.png"
+          src="/assets/shared/desktop/image-category-thumbnail-earphones.png"
           alt="category earphones"
           class="category-img"
         />
@@ -57,7 +57,7 @@ defineProps({
         <div class="link-container">
           <RouterLink to="/earphones" @click="toggleMenu">Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>

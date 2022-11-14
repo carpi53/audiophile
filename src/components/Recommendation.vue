@@ -32,11 +32,11 @@ export default {
     // change the image according to the screen size
     function changeImage(position) {
       if (screenWidth.value < 500) {
-        return `/src/${props.product.others[position].image.mobile.replace(".", "")}`;
+        return props.product.others[position].image.mobile.replace(".", "..");
       } else if (screenWidth.value < 950) {
-        return `/src/${props.product.others[position].image.tablet.replace(".", "")}`;
+        return props.product.others[position].image.tablet.replace(".", "..");
       } else {
-        return `/src/${props.product.others[position].image.desktop.replace(".", "")}`;
+        return props.product.others[position].image.desktop.replace(".", "..");
       }
     }
 

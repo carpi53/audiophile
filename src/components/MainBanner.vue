@@ -6,12 +6,12 @@ defineProps({
 <template>
   <section class="main-banner">
     <img
-      src="@/assets/home/desktop/pattern-circles.svg"
+      src="/assets/home/desktop/pattern-circles.svg"
       alt="circles pattern"
       class="circle-pattern"
     />
     <img
-      src="@/assets/home/desktop/image-speaker-zx9.png"
+      src="/assets/home/desktop/image-speaker-zx9.png"
       alt="speaker zx9"
       class="main-banner-img"
     />

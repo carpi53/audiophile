@@ -9,7 +9,8 @@ export const useCartStore = defineStore("cart", {
     }
     return{
       cart: initialCart,
-      reveal: false
+      reveal: false,
+      route: ""
     }
   },
   getters: {

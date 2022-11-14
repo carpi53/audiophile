@@ -19,7 +19,7 @@ defineProps({
   margin-bottom: 100px;
   .secondary-banner-img {
     width: 50%;
-    background-image: url("@/assets/home/desktop/image-earphones-yx1.jpg");
+    background-image: url("/assets/home/desktop/image-earphones-yx1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

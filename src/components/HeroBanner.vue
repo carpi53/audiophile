@@ -24,7 +24,7 @@ defineProps({
   padding-top: 96px;
   width: 100%;
   height: 100vh;
-  background-image: url("@/assets/home/desktop/image-hero.jpg");
+  background-image: url("/assets/home/desktop/image-hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -81,7 +81,7 @@ defineProps({
 
 @media (max-width: 800px) {
   .hero {
-    background-image: url("@/assets/home/tablet/image-header.jpg");
+    background-image: url("/assets/home/tablet/image-header.jpg");
     .hero-container {
       .hero-content {
         .hero-product-info {
@@ -99,7 +99,7 @@ defineProps({
 
 @media (max-width: 500px) {
   .hero {
-    background-image: url("@/assets/home/mobile/image-header.jpg");
+    background-image: url("/assets/home/mobile/image-header.jpg");
     .hero-container {
       padding: 0;
       hr{

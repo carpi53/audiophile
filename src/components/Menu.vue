@@ -6,7 +6,7 @@ import { RouterLink } from "vue-router";
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-headphones.png"
+          src="/assets/shared/desktop/image-category-thumbnail-headphones.png"
           alt="category headphones"
           class="category-img"
         />
@@ -16,7 +16,7 @@ import { RouterLink } from "vue-router";
         <div class="link-container">
           <RouterLink to="/headphones">Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>
@@ -25,7 +25,7 @@ import { RouterLink } from "vue-router";
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-speakers.png"
+          src="/assets/shared/desktop/image-category-thumbnail-speakers.png"
           alt="category speakers"
           class="category-img"
         />
@@ -35,7 +35,7 @@ import { RouterLink } from "vue-router";
         <div class="link-container">
           <RouterLink to="/speakers">Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>
@@ -44,7 +44,7 @@ import { RouterLink } from "vue-router";
     <div class="menu-category">
       <div class="category-img-container">
         <img
-          src="@/assets/shared/desktop/image-category-thumbnail-earphones.png"
+          src="/assets/shared/desktop/image-category-thumbnail-earphones.png"
           alt="category earphones"
           class="category-img"
         />
@@ -54,7 +54,7 @@ import { RouterLink } from "vue-router";
         <div class="link-container">
           <RouterLink to="/earphones">Shop</RouterLink>
           <img
-            src="@/assets/shared/desktop/icon-arrow-right.svg"
+            src="/assets/shared/desktop/icon-arrow-right.svg"
             alt="arrow right"
           />
         </div>
