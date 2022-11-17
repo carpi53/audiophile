@@ -1,1 +1,0 @@
-import{u as o,r as s,o as t,c as a,a as c}from"./index.737732a8.js";import{_ as p}from"./CategorySection.5151ebda.js";const l={__name:"SpeakersView",setup(u){const e=o(),r=s("Speakers");return(n,_)=>(t(),a(p,{products:c(e).getSpeakers,category:r.value},null,8,["products","category"]))}};export{l as default};
