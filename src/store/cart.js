@@ -28,6 +28,10 @@ export const useCartStore = defineStore("cart", {
     getTotalWithVat(){
       const initialValue = 0;
       return (this.cart.reduce((a,b) => a + (b.quantity * b.price), initialValue) * 1.2).toFixed(0);
+    },
+    getNumberCart(){
+      const initialValue = 0;
+      return (this.cart.reduce((a,b) => a + (b.quantity), initialValue));
     }
   },
   actions: {

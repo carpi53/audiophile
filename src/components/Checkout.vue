@@ -734,7 +734,12 @@ function verifEMoneyPin(emoneyPin) {
         }
       }
       .cash-on-delivery {
+        flex-direction: column;
         margin-bottom: 20px;
+        img{
+          margin-bottom: 15px;
+          margin-right: 0;
+        }
       }
     }
   }
