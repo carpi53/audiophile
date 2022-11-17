@@ -2,12 +2,14 @@
 import { RouterView } from "vue-router";
 import NavBar from "./components/NavBar.vue";
 import FooterSection from "./components/FooterSection.vue";
-import Cart from "./components/Cart.vue"
+import Cart from "./components/Cart.vue";
 </script>
 
 <template>
-  <header></header>
-  <NavBar></NavBar>
+  <div class="header-background"></div>
+  <header>
+    <NavBar></NavBar>
+  </header>
   <Cart></Cart>
   <RouterView :key="$route.fullPath" />
   <FooterSection></FooterSection>
@@ -16,7 +18,7 @@ import Cart from "./components/Cart.vue"
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Manrope:200,300,400,500,600,700,800,900");
 
-header {
+.header-background {
   width: 100%;
   height: 97px;
   background: #000;

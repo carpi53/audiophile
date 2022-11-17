@@ -5,7 +5,7 @@ import CheckoutConfirmation from "./CheckoutConfirmation.vue";
 const cartStore = useCartStore();
 // hide cart when the page is first loaded
 cartStore.reveal = false;
-// get the values of the form 
+// get the values of the form
 const name = ref("");
 const email = ref("");
 const phone = ref("");
@@ -16,7 +16,7 @@ const country = ref("");
 const paymentMethod = ref("eMoney");
 const emoneyNumber = ref("");
 const emoneyPin = ref("");
-// set the confirmation modal to false until the form is valid 
+// set the confirmation modal to false until the form is valid
 const confirmationReveal = ref(false);
 // set the error messages for the form validation
 let errorMsg = reactive({
@@ -47,7 +47,7 @@ const inputsValidity = {
 function resetError(e) {
   errorMsg[e.target.id] = "";
 }
-// verify each form if it's valid or not 
+// verify each form if it's valid or not
 function onSubmit() {
   verifName(name.value);
   verifEmail(email.value);
@@ -58,7 +58,7 @@ function onSubmit() {
   verifCountry(country.value);
   verifPaymentMethod(emoneyNumber.value, emoneyPin.value, paymentMethod.value);
   const keys = Object.keys(inputsValidity);
-  // verify if there are invalid form, if one of the attributes in inputValidity is false 
+  // verify if there are invalid form, if one of the attributes in inputValidity is false
   const failedInput = keys.filter((key) => !inputsValidity[key]);
   if (!failedInput.length) {
     confirmationReveal.value = true;
@@ -183,7 +183,9 @@ function verifEMoneyPin(emoneyPin) {
           <p class="subtitle">billing details</p>
           <div class="input-container">
             <div class="input-group">
-              <label for="name" :class="{ redLabel: errorMsg.name }">Name</label>
+              <label for="name" :class="{ redLabel: errorMsg.name }"
+                >Name</label
+              >
               <p class="error-msg" v-if="errorMsg.name">{{ errorMsg.name }}</p>
               <input
                 type="text"
@@ -197,7 +199,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="email" :class="{ redLabel: errorMsg.email }">Email Address</label>
+              <label for="email" :class="{ redLabel: errorMsg.email }"
+                >Email Address</label
+              >
               <p class="error-msg" v-if="errorMsg.email">
                 {{ errorMsg.email }}
               </p>
@@ -213,7 +217,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="phone" :class="{ redLabel: errorMsg.phone }">Phone Number</label>
+              <label for="phone" :class="{ redLabel: errorMsg.phone }"
+                >Phone Number</label
+              >
               <p class="error-msg" v-if="errorMsg.phone">
                 {{ errorMsg.phone }}
               </p>
@@ -234,7 +240,9 @@ function verifEMoneyPin(emoneyPin) {
           <p class="subtitle">shipping info</p>
           <div class="input-container">
             <div class="input-group address">
-              <label for="address" :class="{ redLabel: errorMsg.address }">Address</label>
+              <label for="address" :class="{ redLabel: errorMsg.address }"
+                >Address</label
+              >
               <p class="error-msg" v-if="errorMsg.address">
                 {{ errorMsg.address }}
               </p>
@@ -250,7 +258,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="zipcode" :class="{ redLabel: errorMsg.zipcode }">ZIP code</label>
+              <label for="zipcode" :class="{ redLabel: errorMsg.zipcode }"
+                >ZIP code</label
+              >
               <p class="error-msg" v-if="errorMsg.zipcode">
                 {{ errorMsg.zipcode }}
               </p>
@@ -266,7 +276,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="city" :class="{ redLabel: errorMsg.city }">City</label>
+              <label for="city" :class="{ redLabel: errorMsg.city }"
+                >City</label
+              >
               <p class="error-msg" v-if="errorMsg.city">
                 {{ errorMsg.city }}
               </p>
@@ -282,7 +294,9 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
             <div class="input-group">
-              <label for="country" :class="{ redLabel: errorMsg.country }">City</label>
+              <label for="country" :class="{ redLabel: errorMsg.country }"
+                >City</label
+              >
               <p class="error-msg" v-if="errorMsg.country">
                 {{ errorMsg.country }}
               </p>
@@ -332,7 +346,8 @@ function verifEMoneyPin(emoneyPin) {
               <label
                 for="emoneyNumber"
                 :class="{ redLabel: errorMsg.emoneyNumber }"
-                >e-Money Number</label>
+                >e-Money Number</label
+              >
               <p class="error-msg" v-if="errorMsg.emoneyNumber">
                 {{ errorMsg.emoneyNumber }}
               </p>
@@ -349,7 +364,8 @@ function verifEMoneyPin(emoneyPin) {
             </div>
             <div class="input-group">
               <label for="country" :class="{ redLabel: errorMsg.emoneyPin }"
-                >e-Money PIN</label>
+                >e-Money PIN</label
+              >
               <p class="error-msg" v-if="errorMsg.emoneyPin">
                 {{ errorMsg.emoneyPin }}
               </p>
@@ -365,7 +381,10 @@ function verifEMoneyPin(emoneyPin) {
               />
             </div>
           </div>
-          <div v-show="paymentMethod === 'cashOnDelivery'" class="cash-on-delivery">
+          <div
+            v-show="paymentMethod === 'cashOnDelivery'"
+            class="cash-on-delivery"
+          >
             <img
               src="/assets/checkout/icon-cash-on-delivery.svg"
               alt="Icone cash on delivery"
@@ -399,7 +418,12 @@ function verifEMoneyPin(emoneyPin) {
         <div class="summary-total">
           <p class="summary-description">Total</p>
           <p class="summary-number">
-            $ {{ cartStore.getTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+            $
+            {{
+              cartStore.getTotal
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }}
           </p>
         </div>
         <div class="summary-total">
@@ -409,13 +433,21 @@ function verifEMoneyPin(emoneyPin) {
         <div class="summary-total">
           <p class="summary-description">VAT Included</p>
           <p class="summary-number">
-            $ {{ cartStore.getVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+            $
+            {{
+              cartStore.getVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }}
           </p>
         </div>
         <div class="summary-total">
           <p class="summary-description">Grand total</p>
           <p class="summary-number">
-            $ {{ cartStore.getTotalWithVat.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+            $
+            {{
+              cartStore.getTotalWithVat
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }}
           </p>
         </div>
       </div>
@@ -694,12 +726,15 @@ function verifEMoneyPin(emoneyPin) {
       }
       .payment-method {
         flex-direction: column;
-        legend{
+        legend {
           margin-bottom: 9px;
         }
         .input-group-radio {
           width: 100%;
         }
+      }
+      .cash-on-delivery {
+        margin-bottom: 20px;
       }
     }
   }

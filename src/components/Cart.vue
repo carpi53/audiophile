@@ -16,7 +16,7 @@ const productPage = computed(() => {
 });
 </script>
 <template>
-  <div class="cart" v-if="cartStore.reveal">
+  <aside class="cart" v-if="cartStore.reveal">
     <Teleport to="body">
       <div class="overlay" @click="cartStore.toggleReveal"></div>
     </Teleport>
@@ -70,7 +70,7 @@ const productPage = computed(() => {
         class="btn-primary checkout"
         >checkout</RouterLink>
     </div>
-  </div>
+  </aside>
 </template>
 <style scoped lang="scss">
 .cart {
