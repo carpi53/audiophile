@@ -1,0 +1,1 @@
+import{u as e,r as s,o as t,c as a,a as c}from"./index.7ce408e5.js";import{_ as n}from"./CategorySection.8c75c9d7.js";const l={__name:"EarphonesView",setup(p){const r=e(),o=s("Earphones");return(u,_)=>(t(),a(n,{products:c(r).getEarphones,category:o.value},null,8,["products","category"]))}};export{l as default};
