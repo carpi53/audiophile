@@ -47,9 +47,7 @@ function toggleCart() {
       class="nav-toggler"
       @click="toggleMenu"
     >
-      <span class="line l1"></span>
-      <span class="line l2"></span>
-      <span class="line l3"></span>
+      <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
     </button>
     <RouterLink to="/" aria-label="nav-logo"
       ><img
@@ -117,23 +115,6 @@ nav {
     cursor: pointer;
     margin-left: 25px;
     display: none;
-  }
-
-  .nav-toggler .line {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 3px;
-    background: #fff;
-    transition: transform 0.3s ease-out, opacity 0.1s ease-out;
-  }
-
-  .l1 {
-    transform: translateY(-6px);
-  }
-
-  .l3 {
-    transform: translateY(+6px);
   }
 
   a {
